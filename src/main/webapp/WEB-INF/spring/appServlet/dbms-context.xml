@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- DataSource 설정 -->
+	<context:property-placeholder location="classpath*:db.properties" />
+	
+	<!-- 히카리 CP - 빈 등록 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${MYSQL_DB_DRIVER}" />
+		<property name="jdbcUrl" value="${MYSQL_DB_URL}" />
+		<property name="username" value="${MYSQL_DB_USERNAME}" />
+		<property name="password" value="${MYSQL_DB_PASSWORD}" />
+	</bean>
+		
+	<!-- 히카리 CP - 설정 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+	
+	<!-- Spring과 MyBatis 연동 설정 -->
+	<!-- MyBatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+        <!-- <property name="mapperLocations" value="classpath:mapper/**/*.xml"></property> -->
+    </bean>
+	
+	<!-- SqlSessionTemplate -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- transactionManager bean -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- transactional annotation 설정 사용 -->
+	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
+	
+	
+	<!-- 빈(Beans) 등록 -->
+	<context:component-scan base-package="com.iot.mgt.dao"></context:component-scan>
+	<context:component-scan base-package="com.iot.mgt.service"></context:component-scan>
+	<context:component-scan base-package="com.iot.mgt.aop"></context:component-scan>
+	<context:component-scan base-package="com.iot.mgt.interceptor"></context:component-scan>
+	
+</beans>

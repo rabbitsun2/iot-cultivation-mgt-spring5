@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 인터셉터 사용 목적: 로그인/로그아웃 보안처리 -->
+	<!-- Interceptor 설정 -->
+	<mvc:interceptors>
+	
+	    <!-- 공통 Interceptor -->
+	    <mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/" />
+			<mvc:exclude-mapping path="/resources/**" />
+			<mvc:exclude-mapping path="/member/login" />
+			<mvc:exclude-mapping path="/member/loginCheck" />
+			<mvc:exclude-mapping path="/member/emailCheck" />
+			<mvc:exclude-mapping path="/member/join" />
+			<mvc:exclude-mapping path="/member/joinCheck" />
+			<mvc:exclude-mapping path="/uni/core/cf3/**" />
+			<mvc:exclude-mapping path="/cv" />
+			<mvc:exclude-mapping path="/introduce" />
+			<beans:bean id="commonInterceptor" class="com.iot.mgt.interceptor.AuthLoginInterceptor" />
+		</mvc:interceptor>
+	
+	</mvc:interceptors>
+
+</beans:beans>

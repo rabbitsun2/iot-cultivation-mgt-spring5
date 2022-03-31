@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.mgt.mapper.AiChatBotMapper">
+
+	<!-- 인공지능 챗봇 -->
+    <select id="selectKeyword" resultType="com.iot.mgt.vo.AiChatBotVO">
+		<![CDATA[
+        	SELECT * from ai_chatbot
+         	where word like #{word}
+        ]]>
+    </select>
+    
+    <select id="selectSentence" resultType="com.iot.mgt.vo.AiChatBotVO">
+		<![CDATA[
+        	SELECT * from ai_chatbot
+         	where sentence like #{sentence}
+        ]]>
+    </select>
+    
+    
+    <select id="selectFilter" resultType="com.iot.mgt.vo.AiChatBotFilterVO">
+		<![CDATA[
+        	SELECT * from ai_chatbot_filter
+         	where word like #{word}
+        ]]>
+    </select>
+	   
+</mapper>

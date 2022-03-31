@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+ /* 상세 조회 */
+.ct_detail_cause_tbl {
+	width:100%;
+	margin:auto;
+	border-collapse: collapse;
+}
+
+.ct_detail_cause_tbl td {
+	border-top:1px solid #666;
+}
+
+/* 표 */
+.ct_detail_list_tbl {
+	width:100%;
+	margin:auto;
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.ct_detail_list_tbl th {
+	border-top:1px solid #666;
+	background-color:#e6e6e6;
+}
+
+.ct_detail_list_tbl td {
+	border-top:1px solid #666;
+}
+
+/* 냉방, 난방 */
+.ct_cool_heat_tbl {
+	width:100%;
+	margin:auto;
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.ct_cool_heat_tbl td {
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+}
+
+/* 물 펌프 */
+.ct_water_pump_tbl {
+	width:100%;
+	margin:auto;
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.ct_water_pump_tbl td {
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+}
+
+/* 폼 수정 */
+.ct_form{
+	/* padding-bottom:-3px; */
+	margin-bottom:0px;
+}
+
+ /* 버튼 */
+.ct_queries_btn {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+.ct_queries_btn:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+.ct_queries_btn:active {
+	position:relative;
+	top:1px;
+}

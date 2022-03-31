@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.mgt.mapper.CoolHeatMapper">
+	<!-- IoT 냉난방 -->
+    <select id="selectCoolHeat" resultType="com.iot.mgt.vo.CoolHeatMonitorVO">
+        SELECT * from iot_cool_heat_monitor 
+        	order by id desc 
+				LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	   
+	<select id="selectBetweenDateCoolHeat" resultType="com.iot.mgt.vo.CoolHeatMonitorVO">
+        SELECT * from iot_cool_heat_monitor 
+        	where createDate between #{startdate} and #{enddate}  
+        		order by id desc  
+					LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+		
+	<select id="selectAllCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_cool_heat_monitor
+		]]>
+	</select>
+	
+	<select id="selectBetweenDateCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_cool_heat_monitor 
+				where createDate between #{startdate} and #{enddate}
+		]]>
+	</select>
+	
+	<insert id="insertCoolHeatMonitor" parameterType="HashMap">
+    	<![CDATA[
+    		insert into iot_cool_heat_monitor 
+    		(createDate, location, cool_state, heat_state, ipv4, ipv6)  
+    		values(
+    		#{createDate}, 
+    		'${location}',
+    		'${cool_state}',
+    		'${heat_state}',
+    		'${ipv4}',
+    		'${ipv6}')
+    	]]>
+    </insert>
+	
+</mapper>

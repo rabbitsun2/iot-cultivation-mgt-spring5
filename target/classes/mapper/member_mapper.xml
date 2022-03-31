@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.mgt.mapper.MemberMapper">
+	    
+	<!-- 회원 조회 -->
+    <select id="selectMember" resultType="com.iot.mgt.vo.MemberVO">
+        <![CDATA[
+        	SELECT * from iot_member 
+        		where email = #{email}
+        ]]>
+    </select>
+    
+    <select id="selectRngMember" resultType="com.iot.mgt.vo.MemberVO">
+        SELECT * from iot_member 
+        	order by id desc 
+				LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	   	   
+	<select id="selectAllCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_member
+		]]>
+	</select>
+    
+	<insert id="insertMember" parameterType="HashMap">
+    	<![CDATA[
+    		insert into iot_member 
+    		(uuid, email, passwd, usrname, birthdate, remember, usrgrant, locked, regidate)  
+    		values(
+    		'${uuid}',
+    		'${email}', 
+    		'${passwd}',
+    		'${usrname}',
+    		'${birthdate}',
+    		${remember},
+    		'${usrgrant}',
+    		${locked},
+    		'${regidate}')
+    	]]>
+    </insert>
+    
+    <update id="updateMember" parameterType="HashMap">
+    	<![CDATA[
+    		update iot_member set 
+    			passwd = '${passwd}', 
+    			birthdate = '${birthdate}',
+    			usrgrant = '${usrgrant}', 
+    			locked = '${locked}'  
+    		where email = '${email}'
+    	]]>
+    </update>
+    
+    <delete id="deleteMember" parameterType="HashMap">
+    	<![CDATA[
+    		delete from iot_member 
+    			where id = #{id}
+    	]]>
+    </delete>
+    
+</mapper>

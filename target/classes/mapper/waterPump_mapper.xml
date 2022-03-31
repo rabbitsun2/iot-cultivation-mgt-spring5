@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.mgt.mapper.WaterPumpMapper">
+	<!-- IoT 물 펌프 -->
+    <select id="selectWaterPump" resultType="com.iot.mgt.vo.WaterPumpVO">
+        SELECT * from iot_water_pump 
+        	order by id desc 
+				LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	   
+	<select id="selectBetweenDateWaterPump" resultType="com.iot.mgt.vo.WaterPumpVO">
+        SELECT * from iot_water_pump 
+        	where createDate between #{startdate} and #{enddate}  
+        		order by id desc  
+					LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+		
+	<select id="selectAllCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_water_pump
+		]]>
+	</select>
+	
+	<select id="selectBetweenDateCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_water_pump  
+				where createDate between #{startdate} and #{enddate}
+		]]>
+	</select>
+	
+	<insert id="insertWaterPump" parameterType="HashMap">
+    	<![CDATA[
+    		insert into iot_water_pump 
+    		(createDate, location, water_state, memo, ipv4, ipv6)  
+    		values(
+    		#{createDate}, 
+    		'${location}',
+    		'${water_state}',
+    		'${memo}',
+    		'${ipv4}',
+    		'${ipv6}')
+    	]]>
+    </insert>
+	
+</mapper>

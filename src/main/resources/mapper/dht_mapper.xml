@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.mgt.mapper.DHTMapper">
+	<!-- IoT 온/습도 -->
+    <select id="selectDHT" resultType="com.iot.mgt.vo.SensorDHTVO">
+        SELECT * from iot_sensor_dht 
+        	order by id desc 
+				LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	   
+	<select id="selectBetweenDateDHT" resultType="com.iot.mgt.vo.SensorDHTVO">
+        SELECT * from iot_sensor_dht 
+        	where regidate between #{startdate} and #{enddate}  
+        		order by id desc  
+					LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	
+	<select id="selectSpecificDHT" resultType="com.iot.mgt.vo.SpecificDHTVO">
+        select HOUR(regidate) AS hh, AVG(temperature) AS avg_temperature, 
+        AVG(humidity) AS avg_humidity from iot_sensor_dht
+		 WHERE regidate BETWEEN #{startdate} AND 
+		 DATE_FORMAT(#{startdate}, '%Y-%m-%d 23:59:59')
+ 		 GROUP BY hh
+ 		 ORDER BY hh ASC
+    </select>
+	
+	<select id="selectAllCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_sensor_dht
+		]]>
+	</select>
+	
+	<select id="selectBetweenDateCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_sensor_dht 
+				where regidate between #{startdate} and #{enddate}
+		]]>
+	</select>
+	
+	<insert id="insertDHT" parameterType="HashMap">
+		<![CDATA[
+			insert into iot_sensor_dht(uuid, regidate, location, temperature,
+				humidity, ipv4, ipv6) 
+			values(
+			'${uuid}',
+			'${regidate}',
+			'${location}',
+			'${temperature}',
+			'${humidity}',
+			'${ipv4}',
+			'${ipv6}')
+		]]>
+		
+	</insert>
+	
+</mapper>

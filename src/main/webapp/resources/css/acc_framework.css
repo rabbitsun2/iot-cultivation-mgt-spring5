@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/* 회원 목록 테이블 */
+.acc_detail_list_tbl {
+	width:100%;
+	margin:auto;
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.acc_detail_list_tbl th {
+	background-color:#e2e2e2;
+	text-align:center;
+}
+
+.acc_detail_list_tbl td {
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	text-align:center;
+}
+
+/* 회원 추가 테이블 */
+.acc_member_add_tbl {
+	width:100%;
+	margin:auto;
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.acc_member_add_tbl td {
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	text-align:center;
+}
+
+.acc_input_box {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:transparent;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.acc_input_box:hover {
+	background-color:transparent;
+}
+.acc_input_box:active {
+	position:relative;
+	top:1px;
+}
+
+.acc_input_chk_Btn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-size:15px;
+	font-weight:bold;
+	padding:4px 9px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.acc_input_chk_Btn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.acc_input_chk_Btn:active {
+	position:relative;
+	top:1px;
+}
+
+.acc_input_add_btn {
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background-color:#3d94f6;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1570cd;
+}
+.acc_input_add_btn:hover {
+	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0;
+}
+.acc_input_add_btn:active {
+	position:relative;
+	top:1px;
+}
+
+.acc_input_modify_btn {
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background-color:#3d94f6;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1570cd;
+}
+.acc_input_modify_btn:hover {
+	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0;
+}
+.acc_input_modify_btn:active {
+	position:relative;
+	top:1px;
+}

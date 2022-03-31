@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/* 물 펌프 */
+.ct_chatbox_tbl {
+	width:70%;
+	margin:auto;
+	border-collapse: collapse;
+	text-align:center;
+}
+
+.ct_chatbox_tbl td {
+	border-top:1px solid #666;
+}
+
+.ct_reply_bot {
+	background-color:#f5b40e;
+	border-radius:42px;
+	border:1px solid #eb800e;
+	display:inline-block;
+	cursor:pointer;
+	color:#404040;
+	font-family:Arial;
+	font-size:9px;
+	padding:32px 1px;
+	text-decoration:none;
+}
+.ct_reply_bot:hover {
+	background-color:#f5c83f;
+}
+.ct_reply_bot:active {
+	position:relative;
+	top:1px;
+}
+
+.ct_sender {
+	background-color:#f2eee4;
+	border-radius:42px;
+	border:1px solid #c7c7c7;
+	display:inline-block;
+	cursor:pointer;
+	color:#404040;
+	font-family:Arial;
+	font-size:9px;
+	padding:32px 1px;
+	text-decoration:none;
+}
+.ct_sender:hover {
+	background-color:#f7f7f7;
+}
+.ct_sender:active {
+	position:relative;
+	top:1px;
+}

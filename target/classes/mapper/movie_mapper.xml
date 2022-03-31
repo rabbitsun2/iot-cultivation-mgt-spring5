@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iot.mgt.mapper.MovieMapper">
+	<!-- IoT 원격영상 -->
+    <select id="selectRemoteMovie" resultType="com.iot.mgt.vo.RemoteMovieVO">
+        SELECT * from iot_remote_movie 
+        	order by id desc 
+				LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	   
+	<select id="selectBetweenDateRemoteMovie" resultType="com.iot.mgt.vo.RemoteMovieVO">
+        SELECT * from iot_remote_movie 
+        	where createDate between #{startdate} and #{enddate}  
+        		order by id desc  
+					LIMIT #{limnum} OFFSET #{startnum}
+    </select>
+	   
+	<select id="selectAllCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_remote_movie
+		]]>
+	</select>
+	
+	<select id="selectBetweenDateCount"
+		parameterType="HashMap"
+		resultType="Integer">
+		<![CDATA[
+			select count(*) from iot_remote_movie 
+				where createDate between #{startdate} and #{enddate}
+		]]>
+	</select>
+	
+</mapper>
